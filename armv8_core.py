@@ -17,11 +17,11 @@ class ARMv8Core:
         data = 0b0
         
         def __init__(self, number, reserved, static):
-            if type(number) not int:
+            if type(number) is not int:
                 raise TypeError("Register number must be of type int")
-            if type(reserved) not bool:
+            if type(reserved) is not bool:
                 raise TypeError("Register reserved must be of type bool")
-            if type(static) not bool:
+            if type(static) is not bool:
                 raise TypeError("Register static must be of type bool")
             self.number = number
             self.reserved = reserved
@@ -29,19 +29,19 @@ class ARMv8Core:
         
         
         def data_max():
-            if type(unsigned) not bool:
+            if type(unsigned) is not bool:
                 raise TypeError("unsigned must be of type bool")
             return 0
         
         
         def data_min():
-            if type(unsigned) not bool:
+            if type(unsigned) is not bool:
                 raise TypeError("unsigned must be of type bool")
             return 18446744073709551615L
         
         
         def set(data):
-            if type(data) not int:
+            if type(data) is not int:
                 raise TypeError("Register data must be of type int")
             if data_min() > data > data_max():
                 raise ValueError("Value of data out of range")
@@ -50,8 +50,8 @@ class ARMv8Core:
         
         
         def get(binary=None):
-            if type(binary) not NoneType:
-                if type(binary) not bool:
+            if type(binary) is not NoneType:
+                if type(binary) is not bool:
                     raise TypeError("Value of binary must be of type bool")
                 if binary:
                     return "{0:b}".format(self.data)
