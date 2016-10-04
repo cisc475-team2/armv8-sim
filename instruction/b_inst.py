@@ -22,7 +22,7 @@ class b_inst:
             raise TypeError("proc must be an ARMv8Core")
         if type(BR_address) is not int:
             raise TypeError("BR_address must be of type int")
-        elif BR_address < 0 or BR_address > pow(2, 26):
+        if BR_address < 0 or BR_address > pow(2, 26):
             raise ValueError("BR_address value out of range for 26 bits")
         if self.operation is not None:
             self.operation(proc, BR_address)
