@@ -11,7 +11,6 @@ class d_inst:
     """
 
     inst_format = 'D'
-    name = ""
     opcode = 0b0
 
     operation = None
