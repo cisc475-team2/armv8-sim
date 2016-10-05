@@ -15,6 +15,20 @@ class d_inst:
 
     operation = None
     op_args = ["proc","T_address","op","Rn","Rt"]
+    
+    
+    def __eq__(self, other):
+        if self.inst_format != other.inst_format:
+            return False
+        elif self.opcode != other.opcode:
+            return False
+        elif self.operation != other.operation:
+            return False
+        elif self.op_args != other.op_args:
+            return False
+        else:
+            return True
+
 
     def execute(self, proc, T_address, op, Rn, Rt):
         if not isinstance(proc, core):
@@ -29,6 +43,7 @@ class d_inst:
             raise TypeError("Rt must be of type int")
         if self.operation is not None:
             self.operation(proc, T_address, op, Rn, Rt)
+
 
     def __init__(self, opcode, operation):
         if type(opcode) is not int:

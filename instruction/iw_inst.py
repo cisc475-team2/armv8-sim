@@ -15,7 +15,20 @@ class iw_inst:
 
     operation = None
     op_args = ["proc","MOV_immediate","Rd"]
-            
+    
+    
+    def __eq__(self, other):
+        if self.inst_format != other.inst_format:
+            return False
+        elif self.opcode != other.opcode:
+            return False
+        elif self.operation != other.operation:
+            return False
+        elif self.op_args != other.op_args:
+            return False
+        else:
+            return True
+
 
     def execute(self, proc, MOV_immediate, Rd):
         if not isinstance(proc, core):
