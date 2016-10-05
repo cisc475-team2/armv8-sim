@@ -1,5 +1,5 @@
 """
-unittest unit tests for internal files of instruction module and the instruction module itself.
+This module provides import testing for the instruction module.
 """
 import unittest
 
