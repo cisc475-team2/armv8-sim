@@ -1,5 +1,5 @@
 """
-unittest unit tests for internal files of instruction module and the instruction module itself.
+This module provides import testing for the instruction module.
 """
 import unittest
 
@@ -190,6 +190,3 @@ class iw_test(unittest.TestCase):
         self.assertNotEqual(iw_a, i_iw_c)
         self.assertEqual(iw_a, i_iw_a)
         self.assertEqual(iw_a, i_iw_d)
-
-if __name__ == '__main__':
-    unittest.main()

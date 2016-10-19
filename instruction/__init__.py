@@ -1,5 +1,5 @@
 """
-This module provides all implemented ARMv8 instructions to be simulated.
+This package provides all implemented ARMv8 instructions to be simulated.
 """
 from armv8_core import ARMv8Core as core
 from r_inst import r_inst as R
