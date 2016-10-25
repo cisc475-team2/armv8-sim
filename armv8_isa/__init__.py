@@ -8,3 +8,5 @@ from instruction import R, I, D, B, CB, IW
 from add import ADD
 from sub import SUB
 from addi import ADDI
+from subi import SUBI
+from udiv import UDIV
