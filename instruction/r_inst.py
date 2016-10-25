@@ -34,13 +34,13 @@ class r_inst:
         if not isinstance(proc, core):
             raise TypeError("proc must be an ARMv8Core")
         if type(Rm) is not str:
-            raise TypeError("Rm must be of type int")
+            raise TypeError("Rm must be of type str")
         if type(shamt) is not int:
             raise TypeError("shamt must be of type int")
         if type(Rn) is not str:
-            raise TypeError("Rn must be of type int")
+            raise TypeError("Rn must be of type str")
         if type(Rd) is not str:
-            raise TypeError("Rd must be of type int")
+            raise TypeError("Rd must be of type str")
         if self.operation is not None:
             self.operation(proc, Rm, shamt, Rn, Rd)
 
