@@ -21,9 +21,3 @@ class R_Instructions_Test(unittest.TestCase):
         c.reg["X1"].set(3)
         armv8_isa.SUB.execute(c, "X0", 0, "X1", "X2")
         self.assertEqual(c.reg["X2"].get(), 1)
-        
-    def test_addi(self):
-        c = ARMv8Core()
-        c.reg["X0"].set(1)
-        armv8_isa.ADDI.execute(c, 1, "X0", "X1") # immediate = 1
-        self.assertEqual(c.reg["X1"].get(), 2)
