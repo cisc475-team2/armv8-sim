@@ -6,3 +6,5 @@ from instruction import R, I, D, B, CB, IW
 
 # Import instructions from modules below
 from add import ADD
+from sub import SUB
+from addi import ADDI
