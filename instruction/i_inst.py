@@ -35,10 +35,10 @@ class i_inst:
             raise TypeError("proc must be an ARMv8Core")
         if type(ALU_immediate) is not int:
             raise TypeError("ALU_immediate must be of type int")
-        if type(Rn) is not int:
-            raise TypeError("Rn must be of type int")
-        if type(Rd) is not int:
-            raise TypeError("Rd must be of type int")
+        if type(Rn) is not str:
+            raise TypeError("Rn must be of type str")
+        if type(Rd) is not str:
+            raise TypeError("Rd must be of type str")
         if self.operation is not None:
             self.operation(proc, ALU_immediate, Rn, Rd)
 
