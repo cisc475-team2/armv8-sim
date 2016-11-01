@@ -11,4 +11,4 @@ def operation(proc, ALU_immediate, Rn, Rd):
         result = raw
     proc.reg[Rd].set(result)
 
-ADDI = I(0x688, operation)
+SUBI = I(0x688, operation)

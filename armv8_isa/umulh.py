@@ -1,5 +1,5 @@
 """
-This module provides the R-format MUL instruction
+This module provides the R-format UMULH instruction
 """
 from armv8_isa import R
 
@@ -8,4 +8,4 @@ def operation(proc, Rm, shamt, Rn, Rd):
     result = int(raw % proc.reg[Rd].data_max())
     proc.reg[Rd].set(result)
 
-MUL = R(0x4DE, operation)
+UMULH = R(0x4DE, operation)

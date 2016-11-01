@@ -42,3 +42,10 @@ class R_Instructions_Test(unittest.TestCase):
         c.reg["X1"].set(5)
         armv8_isa.UDIV.execute(c, "X0", 0, "X1", "X2")
         self.assertEqual(c.reg["X2"].get(), 50)
+        
+    def test_sdiv(self):
+        c = ARMv8Core()
+        c.reg["X0"].set(10)
+        c.reg["X1"].set(5)
+        armv8_isa.UDIV.execute(c, "X0", 0x02, "X1", "X2")
+        self.assertEqual(c.reg["X2"].get(), 2)

@@ -12,3 +12,4 @@ from subi import SUBI
 from udiv import UDIV
 from mul import MUL
 from umulh import UMULH
+from sdiv import SDIV
