@@ -18,5 +18,23 @@ class I_Instructions_Test(unittest.TestCase):
     def test_subi(self):
         c = ARMv8Core()
         c.reg["X0"].set(1)
-        armv8_isa.ADDI.execute(c, 1, "X0", "X1") # immediate = 1
+        armv8_isa.SUBI.execute(c, 1, "X0", "X1") # immediate = 1
         self.assertEqual(c.reg["X1"].get(), 0)
+        
+    def test_andi(self):
+        c = ARMv8Core()
+        c.reg["X0"].set(20)
+        armv8_isa.ANDI.execute(c, 5, "X0", "X1") # immediate = 1
+        self.assertEqual(c.reg["X1"].get(), 4)
+        
+    def test_eori(self):
+        c = ARMv8Core()
+        c.reg["X0"].set(5)
+        armv8_isa.EORI.execute(c, 10, "X0", "X1") # immediate = 1
+        self.assertEqual(c.reg["X1"].get(), 15)
+        
+    def test_orri(self):
+        c = ARMv8Core()
+        c.reg["X0"].set(25)
+        armv8_isa.ORRI.execute(c, 10, "X0", "X1") # immediate = 1
+        self.assertEqual(c.reg["X1"].get(), 27)

@@ -13,3 +13,11 @@ from udiv import UDIV
 from mul import MUL
 from umulh import UMULH
 from sdiv import SDIV
+from andr import AND
+from andi import ANDI
+from eor import EOR
+from eori import EORI
+from lsl import LSL
+from lsr import LSR
+from orr import ORR
+from orri import ORRI
