@@ -22,18 +22,32 @@ def main():
             print_tips()
         elif args[0] == "exit":
             running = False
+        elif args[0] == "printregs":
+            print_all_registers(c)
 ####### INSTRUCTIONS ############################################################################
         elif args[0] == "ADD":
             if len(args) != 4:
                 print "Error: incorrect number of arguments"
             else:
-                armv8_isa.ADD.execute(c, args[2], 0, args[3], args[1])
+                armv8_isa.ADD.execute(c, args[3], 0, args[2], args[1])
                 print_register(args[1],c)
         elif args[0] == "ADDI":
             if len(args) != 4:
                 print "Error: incorrect number of arguments"
             else:
                 armv8_isa.ADDI.execute(c, int(args[3]), args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "SUB":
+            if len(args) != 4:
+                print "Error: incorrect number of arguments"
+            else:
+                armv8_isa.SUB.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "SUBI":
+            if len(args) != 4:
+                print "Error: incorrect number of arguments"
+            else:
+                armv8_isa.SUBI.execute(c, int(args[3]), args[2], args[1])
                 print_register(args[1],c)
         else:
             print "Please enter a valid command"
@@ -43,7 +57,8 @@ def main():
 # printing functions
 def print_commands():
     print "Commands:"
-    print "  exit    exits and closes program"
+    print "  exit           exits and closes program"
+    print "  printregs      print all registers"
     print ""
 
 def print_instructions():
@@ -82,5 +97,14 @@ def print_tips():
     
 def print_register(register, core):
     print register + " = " + str(core.reg[register].get())
-
+    print "Hex = " + hex(core.reg[register].get())
+    print "Binary = " + bin(core.reg[register].get())
+    
+def print_all_registers(core):
+    for num in range(0,31):
+        register = "X" + str(num)
+        print_register(register, core)
+        print "-----------------------------------"
+    print_register("XZR", core)
+    print ""
 ###############################################################################################
