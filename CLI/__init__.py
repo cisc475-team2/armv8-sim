@@ -4,3 +4,5 @@ This package provides all implemented ARMv8 instructions to be simulated using C
 from armv8_core import ARMv8Core
 import armv8_isa
 import instruction
+
+from cli import main

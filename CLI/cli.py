@@ -1,25 +1,40 @@
 # package imports
-#from CLI import ARMv8Core
-#from CLI import armv8_isa
-#from CLI import instruction
+from CLI import ARMv8Core
+from CLI import armv8_isa
+from CLI import instruction
 import sys
 
 # main function
 def main():
- #   c = ARMv8Core()
+    c = ARMv8Core()
     print("Welcome to our ARMv8 simulator!")
     print("Type help at any time for a list of commands, instructions, and tips")
     print ""
     running = True
     while(running):
-        args = raw_input("Enter a command or an ARMv8 instruction: ")
-        #print "you entered", args
-        if args == "help":
+        arg = raw_input("Enter a command or an ARMv8 instruction: ")
+        str(arg)
+        args = str.split(arg)
+####### COMMANDS #################################################################################
+        if args[0] == "help":
             print_commands()
             print_instructions()
             print_tips()
-        elif args == "exit":
+        elif args[0] == "exit":
             running = False
+####### INSTRUCTIONS ############################################################################
+        elif args[0] == "ADD":
+            if len(args) != 4:
+                print "Error: incorrect number of arguments"
+            else:
+                armv8_isa.ADD.execute(c, args[2], 0, args[3], args[1])
+                print_register(args[1],c)
+        elif args[0] == "ADDI":
+            if len(args) != 4:
+                print "Error: incorrect number of arguments"
+            else:
+                armv8_isa.ADDI.execute(c, int(args[3]), args[2], args[1])
+                print_register(args[1],c)
         else:
             print "Please enter a valid command"
             print ""
@@ -39,7 +54,7 @@ def print_instructions():
     print "    Xm = register where 2nd value to be used is stored"
     print "    d, n, and m must be integers between 0 and 31"
     print "    SP = stack pointer (can be used in certain instructions in place of Xd)"
-    print "    #imm = immediate value to be used in insturction (used in place of register and is not stored)"
+    print "    #imm = immediate integer value to be used in insturction (used in place of register and is not stored)"
     print "  Arithmetic operations:"
     print "    ADD Xd, Xn, Xm           Add"
     print "    ADDI Xd, Xn, #imm        Add (immediate)"
@@ -64,7 +79,8 @@ def print_tips():
     print "Tips:"
     print "  Checkout http://armsim.cs.uvic.ca/ for another ARM simulation tool"
     print ""
+    
+def print_register(register, core):
+    print register + " = " + str(core.reg[register].get())
 
 ###############################################################################################
-# running main
-main()
