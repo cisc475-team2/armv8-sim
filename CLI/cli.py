@@ -15,6 +15,7 @@ def main():
         arg = raw_input("Enter a command or an ARMv8 instruction: ")
         str(arg)
         args = str.split(arg)
+        
 ####### COMMANDS #################################################################################
         if args[0] == "help":
             print_commands()
@@ -24,33 +25,35 @@ def main():
             running = False
         elif args[0] == "printregs":
             print_all_registers(c)
+            
 ####### INSTRUCTIONS ############################################################################
         elif args[0] == "ADD":
-            if len(args) != 4:
-                print "Error: incorrect number of arguments"
-            else:
+            if error_check(args) == 1:
                 armv8_isa.ADD.execute(c, args[3], 0, args[2], args[1])
                 print_register(args[1],c)
         elif args[0] == "ADDI":
-            if len(args) != 4:
-                print "Error: incorrect number of arguments"
-            else:
+            if error_check(args) == 1:
                 armv8_isa.ADDI.execute(c, int(args[3]), args[2], args[1])
                 print_register(args[1],c)
         elif args[0] == "SUB":
-            if len(args) != 4:
-                print "Error: incorrect number of arguments"
-            else:
+            if error_check(args) == 1:
                 armv8_isa.SUB.execute(c, args[3], 0, args[2], args[1])
                 print_register(args[1],c)
         elif args[0] == "SUBI":
-            if len(args) != 4:
-                print "Error: incorrect number of arguments"
-            else:
+            if error_check(args) == 1:
                 armv8_isa.SUBI.execute(c, int(args[3]), args[2], args[1])
                 print_register(args[1],c)
+        elif args[0] == "MUL":
+            if error_check(args) == 1:
+                armv8_isa.MUL.execute(c, args[3], 0x1F, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "UMULH":
+            if error_check(args) == 1:
+                armv8_isa.UMULH.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)
+            
         else:
-            print "Please enter a valid command"
+            print "Please enter a valid command. Type 'help' for valid options."
             print ""
 
 ########################################################################################
@@ -99,6 +102,7 @@ def print_register(register, core):
     print register + " = " + str(core.reg[register].get())
     print "Hex = " + hex(core.reg[register].get())
     print "Binary = " + bin(core.reg[register].get())
+    print ""
     
 def print_all_registers(core):
     for num in range(0,31):
@@ -108,3 +112,14 @@ def print_all_registers(core):
     print_register("XZR", core)
     print ""
 ###############################################################################################
+# error checking
+def error_check(args):
+    if len(args) != 4:
+        print "Error: incorrect number of arguments."
+        print "Instructions should have the following format:"
+        print "eg. ADD X2 X0 X1 or ADDI X3 X2 2"
+        print ""
+        return -1
+    else:
+        return 1
+    
