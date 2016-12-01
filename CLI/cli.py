@@ -51,7 +51,46 @@ def main():
             if error_check(args) == 1:
                 armv8_isa.UMULH.execute(c, args[3], 0, args[2], args[1])
                 print_register(args[1],c)
-            
+        elif args[0] == "SDIV":
+            if error_check(args) == 1:
+                armv8_isa.SDIV.execute(c, args[3], 0x02, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "UDIV":
+            if error_check(args) == 1:
+                armv8_isa.UDIV.execute(c, args[3], 0x03, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "AND":
+            if error_check(args) == 1:
+                armv8_isa.AND.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "ANDI":
+            if error_check(args) == 1:
+                armv8_isa.ANDI.execute(c, int(args[3]), args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "EOR":
+            if error_check(args) == 1:
+                armv8_isa.EOR.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "EORI":
+            if error_check(args) == 1:
+                armv8_isa.EORI.execute(c, int(args[3]), args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "LSL":
+            if error_check(args) == 1:
+                armv8_isa.LSL.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "LSR":
+            if error_check(args) == 1:
+                armv8_isa.LSR.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)  
+        elif args[0] == "ORR":
+            if error_check(args) == 1:
+                armv8_isa.ORR.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)
+        elif args[0] == "ORRI":
+            if error_check(args) == 1:
+                armv8_isa.ORRI.execute(c, int(args[3]), args[2], args[1])
+                print_register(args[1],c)
         else:
             print "Please enter a valid command. Type 'help' for valid options."
             print ""
