@@ -66,15 +66,15 @@ class R_Instructions_Test(unittest.TestCase):
         
     def test_lsl(self):
         c = ARMv8Core()
-        c.reg["X0"].set(10)
-        c.reg["X1"].set(2)
+        c.reg["X0"].set(2)
+        c.reg["X1"].set(10)
         armv8_isa.LSL.execute(c, "X0", 0, "X1", "X2")
         self.assertEqual(c.reg["X2"].get(), 40)
         
     def test_lsr(self):
         c = ARMv8Core()
-        c.reg["X0"].set(40)
-        c.reg["X1"].set(2)
+        c.reg["X0"].set(2)
+        c.reg["X1"].set(40)
         armv8_isa.LSR.execute(c, "X0", 0, "X1", "X2")
         self.assertEqual(c.reg["X2"].get(), 10)
         
