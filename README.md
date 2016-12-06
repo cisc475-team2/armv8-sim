@@ -9,6 +9,7 @@ Simply install the prereqs, download, and [soon] run.
 
 ### Prerequisites
 - [Python 2.7](https://www.python.org/downloads/)
+- [PyQt4/5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html)
 
 
 ### Download
