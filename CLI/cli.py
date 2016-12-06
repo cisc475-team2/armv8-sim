@@ -23,9 +23,23 @@ def main():
             print_tips()
         elif args[0] == "exit":
             running = False
-        elif args[0] == "printregs":
+        elif args[0] == "printall":
             print_all_registers(c)
-            
+            print_flags(c)
+        elif args[0] == "printflags":
+            print_flags(c)
+        elif args[0] == "run":
+            if len(args) != 2:
+                print "Error: command needs 2 arguments."
+                print "Eg. run file"
+                print ""
+            else:
+                #read from file
+                print "Executing insturctions from file: " + args[1]
+                f = open(args[1], 'r')
+                print f.read()
+                f.close()
+                
 ####### INSTRUCTIONS ############################################################################
         elif args[0] == "ADD":
             if error_check(args) == 1:
@@ -35,6 +49,10 @@ def main():
             if error_check(args) == 1:
                 armv8_isa.ADDI.execute(c, int(args[3]), args[2], args[1])
                 print_register(args[1],c)
+        elif args[0] == "ADDS":
+            if error_check(args) == 1:
+                armv8_isa.ADDS.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1], c)
         elif args[0] == "SUB":
             if error_check(args) == 1:
                 armv8_isa.SUB.execute(c, args[3], 0, args[2], args[1])
@@ -99,8 +117,10 @@ def main():
 # printing functions
 def print_commands():
     print "Commands:"
-    print "  exit           exits and closes program"
-    print "  printregs      print all registers"
+    print "  exit                   exits and closes program"
+    print "  printall               print all registers and condition flags"
+    print "  printflags             print all 4 condition flags"
+    print "  run <path/to/file>     run instructions from a file"
     print ""
 
 def print_instructions():
@@ -115,6 +135,7 @@ def print_instructions():
     print "  Arithmetic operations:"
     print "    ADD Xd, Xn, Xm           Add"
     print "    ADDI Xd, Xn, #imm        Add (immediate)"
+    print "    ADDS Xd, Xn, Xm          Add and set condition flags"
     print "    SUB Xd, Xn, Xm           Subtract"
     print "    SUBI Xd. Xn, #imm        Subtract (immediate)"
     print "    MUL Xd, Xn, Xm           Multiply"
@@ -150,6 +171,14 @@ def print_all_registers(core):
         print "-----------------------------------"
     print_register("XZR", core)
     print ""
+    
+def print_flags(core):
+    print "Zero Flag: {}".format(core.flag_zero)
+    print "Negative Flag: {}".format(core.flag_negative)
+    print "Carry Flag: {}".format(core.flag_carry)
+    print "Overflow Flag: {}".format(core.flag_overflow)
+    print ""
+    
 ###############################################################################################
 # error checking
 def error_check(args):

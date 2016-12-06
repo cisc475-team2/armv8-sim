@@ -14,6 +14,12 @@ class R_Instructions_Test(unittest.TestCase):
         c.reg["X1"].set(1)
         armv8_isa.ADD.execute(c, "X0", 0, "X1", "X2")
         self.assertEqual(c.reg["X2"].get(), 2)
+    
+    def test_adds(self):
+        c = ARMv8Core()
+        c.reg["X0"].set(0)
+        armv8_isa.ADDS.execute(c, "X0", 0, "X0", "X0")
+        self.assertEqual(c.flag_zero, True)
         
     def test_sub(self):
         c = ARMv8Core()
