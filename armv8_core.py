@@ -118,7 +118,8 @@ class ARMv8Core:
         "X28": Register(28, False, False),
         "X29": Register(29, False, False),
         "X30": Register(30, False, False),
-        "XZR": Register(31, True, True)
+        "XZR": Register(31, True, True),
+        "PC": Register(32, True, False)
     }
     
     
