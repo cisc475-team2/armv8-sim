@@ -25,3 +25,26 @@ from adds import ADDS
 from addis import ADDIS
 from subs import SUBS
 from subis import SUBIS
+
+instset = {
+    "ADD": ADD,
+    "SUB": SUB,
+    "ADDI": ADDI,
+    "SUBI": SUBI,
+    "UDIV": UDIV,
+    "MUL": MUL,
+    "UMULH": UMULH,
+    "SDIV": SDIV,
+    "AND": AND,
+    "ANDI": ANDI,
+    "EOR": EOR,
+    "EORI": EORI,
+    "LSL": LSL,
+    "LSR": LSR,
+    "ORR": ORR,
+    "ORRI": ORRI,
+    "ADDS": ADDS,
+    "ADDIS": ADDIS,
+    "SUBS": SUBS,
+    "SUBIS": SUBIS
+}
