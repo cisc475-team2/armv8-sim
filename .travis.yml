@@ -1,8 +1,6 @@
 language: python
 python:
     - "2.7"
-before_install:
-    - sudo apt-get install -qq python-qt4
 install:
     - pip install -r requirements.txt
-script: nosetests
+script: nosetests --exclude-dir=GUI
