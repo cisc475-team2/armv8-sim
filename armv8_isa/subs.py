@@ -1,10 +1,10 @@
 """
-This module provides the R-format ADDS instruction
+This module provides the R-format SUBS instruction
 """
 from armv8_isa import R
 
 def operation(proc, Rm, shamt, Rn, Rd):
-    raw = proc.reg[Rn].get() + proc.reg[Rm].get()
+    raw = proc.reg[Rn].get() - proc.reg[Rm].get()
     # set flags
     if (raw < 0):
         # set negative flag
@@ -20,7 +20,7 @@ def operation(proc, Rm, shamt, Rn, Rd):
     elif (raw > proc.reg[Rd].data_max()):
         # set overflow flag
         proc.flag_overflow = True
-        
+    
     else:
         proc.flag_negative = False
         proc.flag_zero = False
@@ -30,4 +30,4 @@ def operation(proc, Rm, shamt, Rn, Rd):
     result = int(raw % proc.reg[Rd].data_max())
     proc.reg[Rd].set(result)
 
-ADDS = R(0x558, operation)
+SUBS = R(0x758, operation)

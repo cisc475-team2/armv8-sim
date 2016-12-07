@@ -1,10 +1,11 @@
 """
-This module provides the R-format ADDS instruction
+This module provides the I-format ADDIS instruction
 """
-from armv8_isa import R
+from armv8_isa import I
 
-def operation(proc, Rm, shamt, Rn, Rd):
-    raw = proc.reg[Rn].get() + proc.reg[Rm].get()
+def operation(proc, ALU_immediate, Rn, Rd):
+    raw = proc.reg[Rn].get() + ALU_immediate
+    
     # set flags
     if (raw < 0):
         # set negative flag
@@ -26,8 +27,8 @@ def operation(proc, Rm, shamt, Rn, Rd):
         proc.flag_zero = False
         proc.flag_carry = False
         proc.flag_overflow = False
-        
+    
     result = int(raw % proc.reg[Rd].data_max())
     proc.reg[Rd].set(result)
 
-ADDS = R(0x558, operation)
+ADDIS = I(0x588, operation)

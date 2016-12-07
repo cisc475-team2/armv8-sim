@@ -28,6 +28,12 @@ class R_Instructions_Test(unittest.TestCase):
         armv8_isa.SUB.execute(c, "X0", 0, "X1", "X2")
         self.assertEqual(c.reg["X2"].get(), 1)
         
+    def test_subs(self):
+        c = ARMv8Core()
+        c.reg["X0"].set(1)
+        armv8_isa.SUBS.execute(c, "X0", 0, "X0", "X0")
+        self.assertEqual(c.flag_zero, True)
+        
     def test_udiv(self):
         c = ARMv8Core()
         c.reg["X0"].set(5)

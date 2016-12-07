@@ -54,6 +54,12 @@ def main():
             if error_check(args) == 1:
                 armv8_isa.ADDS.execute(c, args[3], 0, args[2], args[1])
                 print_register(args[1], c)
+                print_flags(c)
+        elif args[0] == "ADDIS":
+            if error_check(args) == 1:
+                armv8_isa.ADDIS.execute(c, int(args[3]), args[2], args[1])
+                print_register(args[1],c)
+                print_flags(c)
         elif args[0] == "SUB":
             if error_check(args) == 1:
                 armv8_isa.SUB.execute(c, args[3], 0, args[2], args[1])
@@ -62,6 +68,16 @@ def main():
             if error_check(args) == 1:
                 armv8_isa.SUBI.execute(c, int(args[3]), args[2], args[1])
                 print_register(args[1],c)
+        elif args[0] == "SUBS":
+            if error_check(args) == 1:
+                armv8_isa.SUBS.execute(c, args[3], 0, args[2], args[1])
+                print_register(args[1],c)
+                print_flags(c)
+        elif args[0] == "SUBIS":
+            if error_check(args) == 1:
+                armv8_isa.SUBIS.execute(c, int(args[3]), args[2], args[1])
+                print_register(args[1],c)
+                print_flags(c)
         elif args[0] == "MUL":
             if error_check(args) == 1:
                 armv8_isa.MUL.execute(c, args[3], 0x1F, args[2], args[1])
@@ -137,8 +153,11 @@ def print_instructions():
     print "    ADD Xd, Xn, Xm           Add"
     print "    ADDI Xd, Xn, #imm        Add (immediate)"
     print "    ADDS Xd, Xn, Xm          Add and set condition flags"
+    print "    ADDIS Xd, Xn, #imm       Add (immediate) and set condition flags"
     print "    SUB Xd, Xn, Xm           Subtract"
     print "    SUBI Xd. Xn, #imm        Subtract (immediate)"
+    print "    SUBS Xd, Xn, Xm          Subtract and set condition flags"
+    print "    SUBSI Xd, Xn, #imm       Subtract (immediate) and set condition flags"
     print "    MUL Xd, Xn, Xm           Multiply"
     print "    UMULH Xd, Xn, Xm         Unsigned multiply high"
     print "    SDIV Xd, Xn, Xm          Signed divide"
