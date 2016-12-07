@@ -1,5 +1,6 @@
 # package imports
 from CLI import ARMv8Core
+from CLI import armv8_file
 from CLI import armv8_isa
 from CLI import instruction
 import sys
@@ -37,7 +38,7 @@ def main():
                 #read from file
                 print "Executing insturctions from file: " + args[1]
                 f = open(args[1], 'r')
-                print f.read()
+                armv8_file.parseFile(f)
                 f.close()
                 
 ####### INSTRUCTIONS ############################################################################
