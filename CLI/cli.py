@@ -38,7 +38,7 @@ def main():
                 #read from file
                 print "Executing insturctions from file: " + args[1]
                 f = open(args[1], 'r')
-                armv8_file.parseFile(f)
+                armv8_file.coreParseFile(c, f)
                 f.close()
                 
 ####### INSTRUCTIONS ############################################################################
