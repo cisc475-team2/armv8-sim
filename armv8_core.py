@@ -46,12 +46,18 @@ class ARMv8Core:
             self.static = static
         
         
-        def data_max(self):
-            return 18446744073709551615
+        def data_max(self, unsigned=True):
+            if unsigned:
+                return 18446744073709551615
+            else:
+                return 9223372036854775807
         
         
-        def data_min(self):
-            return 0
+        def data_min(self, unsigned=True):
+            if unsigned:
+                return 0
+            else:
+                return -9223372036854775808
         
         
         def set(self, data):
@@ -112,7 +118,8 @@ class ARMv8Core:
         "X28": Register(28, False, False),
         "X29": Register(29, False, False),
         "X30": Register(30, False, False),
-        "XZR": Register(31, True, True)
+        "XZR": Register(31, True, True),
+        "PC": Register(32, True, False)
     }
     
     

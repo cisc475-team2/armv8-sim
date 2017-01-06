@@ -2,8 +2,8 @@
 """
 This module provides a Command Line Interface (CLI) for armv8-sim.
 """
-import CLI
+import GUI
 ###############################################################################################
 # running main
 if __name__ == "__main__":
-    CLI.main()
+    GUI.main()
